@@ -3,9 +3,12 @@ package com.portfolio.myselectshop.controller;
 import com.portfolio.myselectshop.dto.ProductMypriceRequestDto;
 import com.portfolio.myselectshop.dto.ProductRequestDto;
 import com.portfolio.myselectshop.dto.ProductResponseDto;
+import com.portfolio.myselectshop.entity.Product;
 import com.portfolio.myselectshop.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -25,5 +28,11 @@ public class ProductController {
     @PutMapping("/products/{id}")
     public ProductResponseDto updateProduct(@PathVariable Long id, @RequestBody ProductMypriceRequestDto requestDto) {
         return productService.updateProduct(id, requestDto);
+    }
+
+    // 관심 상품 조회
+    @GetMapping("/products")
+    public List<ProductResponseDto> getProducts() {
+        return productService.getProducts();
     }
 }
