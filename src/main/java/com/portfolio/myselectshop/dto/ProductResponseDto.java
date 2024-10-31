@@ -20,5 +20,6 @@ public class ProductResponseDto {
         this.link = product.getLink();
         this.image = product.getImage();
         this.lprice = product.getLprice();
+        this.myprice = product.getMyprice();
     }
 }
