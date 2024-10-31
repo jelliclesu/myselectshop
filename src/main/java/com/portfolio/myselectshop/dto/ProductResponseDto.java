@@ -14,4 +14,11 @@ public class ProductResponseDto {
     private int lprice;
     private int myprice;
 
+    public ProductResponseDto(Product product) {
+        this.id = product.getId();
+        this.title = product.getTitle();
+        this.link = product.getLink();
+        this.image = product.getImage();
+        this.lprice = product.getLprice();
+    }
 }
