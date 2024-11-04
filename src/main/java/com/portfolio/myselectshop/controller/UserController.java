@@ -55,9 +55,9 @@ public class UserController {
     }
 
     // 회원 관련 정보 받기
-    @GetMapping("/api/user-info")
+    @GetMapping("/user-info")
     @ResponseBody
-    public UserInfoDto getUserInfo(UserDetailsImpl userDetails) {
+    public UserInfoDto getUserInfo(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         String username = userDetails.getUser().getUsername();
         UserRoleEnum role = userDetails.getUser().getRole();
         boolean isAdmin = (role == UserRoleEnum.ADMIN);
