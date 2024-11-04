@@ -35,7 +35,7 @@ public class Product extends Timestamped {
     private int myprice;
 
 
-    public Product(ProductRequestDto requestDto) {
+    public Product(ProductRequestDto requestDto, User user) {
         this.title = requestDto.getTitle();
         this.link = requestDto.getLink();
         this.image = requestDto.getImage();
@@ -49,4 +49,8 @@ public class Product extends Timestamped {
     public void updateByItemDto(ItemDto itemDto) {
         this.lprice = itemDto.getLprice();
     }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }
