@@ -3,7 +3,6 @@ package com.portfolio.myselectshop.controller;
 import com.portfolio.myselectshop.dto.ProductMypriceRequestDto;
 import com.portfolio.myselectshop.dto.ProductRequestDto;
 import com.portfolio.myselectshop.dto.ProductResponseDto;
-import com.portfolio.myselectshop.entity.Product;
 import com.portfolio.myselectshop.security.UserDetailsImpl;
 import com.portfolio.myselectshop.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -36,5 +35,11 @@ public class ProductController {
     @GetMapping("/products")
     public List<ProductResponseDto> getProducts(@AuthenticationPrincipal UserDetailsImpl userDetails) {
         return productService.getProducts(userDetails.getUser());
+    }
+
+    // 관리자 조회
+    @GetMapping("/admin/products")
+    public List<ProductResponseDto> getAllProducts() {
+        return productService.getAllProducts();
     }
 }
