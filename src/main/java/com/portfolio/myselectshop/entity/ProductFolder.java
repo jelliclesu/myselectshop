@@ -3,10 +3,12 @@ package com.portfolio.myselectshop.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @Entity
+@NoArgsConstructor
 @Table(name = "product_folder")
 public class ProductFolder {
     @Id
@@ -20,4 +22,9 @@ public class ProductFolder {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "folder_id", nullable = false)
     private Folder folder;
+
+    public ProductFolder(Product product, Folder folder) {
+        this.product = product;
+        this.folder = folder;
+    }
 }
