@@ -26,7 +26,7 @@ public class FolderService {
         for (String folderName : folderNames) {
             // 이미 생성한 폴더가 아닌 경우만 폴더 생성
             if (!isExistFolderName(folderName, existFolderList)) {
-                Folder folder = new Folder();
+                Folder folder = new Folder(folderName, user);
                 folderList.add(folder);
             } else {
                 throw new IllegalArgumentException("폴더명이 중복되었습니다.");

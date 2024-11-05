@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 @Entity
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Folder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +22,8 @@ public class Folder {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    public Folder(String name, User user) {
+        this.name = name;
+        this.user = user;
+    }
 }
