@@ -36,6 +36,17 @@ public class FolderService {
         folderRepository.saveAll(folderList);
     }
 
+    // 로그인한 회원이 등록된 모든 폴더 조회
+    public List<FolderResponseDto> getFolders(User user) {
+        List<Folder> folderList = folderRepository.findAllByUser(user);
+        List<FolderResponseDto> responseDtoList = new ArrayList<>();
+
+        for (Folder folder : folderList) {
+            responseDtoList.add(new FolderResponseDto(folder));
+        }
+        return responseDtoList;
+    }
+
     private boolean isExistFolderName(String folderName, List<Folder> existFolderList) {
         // 기존 폴더 리스트에 folder name 이 있는지 확인
         for (Folder exitstFolder : existFolderList) {
@@ -45,17 +56,5 @@ public class FolderService {
         }
         return false;
 
-    }
-
-    // 로그인한 회원이 등록된 모든 폴더 조회
-    public List<FolderResponseDto> getFolders(User user) {
-        List<Folder> folderList = folderRepository.findAllByUser(user);
-        List<FolderResponseDto> responseDtoList = new ArrayList<>();
-
-        for (Folder folder : folderList) {
-            responseDtoList.add(new FolderResponseDto(folder));
-        }
-
-        return responseDtoList;
     }
 }
